@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/setListFragment">
+
+    <fragment
+        android:id="@+id/setListFragment"
+        android:name="com.toyibnurseha.mvvmpattern.setlist.SetListFragment"
+        android:label="fragment_set_list"
+        tools:layout="@layout/fragment_set_list" >
+        <action
+            android:id="@+id/action_setListFragment_to_pokemonListFragment"
+            app:destination="@id/pokemonListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonListFragment"
+        android:name="com.toyibnurseha.mvvmpattern.pokemonlist.PokemonListFragment"
+        android:label="{setName}"
+        tools:layout="@layout/fragment_pokemon_list">
+        <action
+            android:id="@+id/action_pokemonListFragment_to_pokemonCardDetailFragment"
+            app:destination="@id/pokemonCardDetailFragment" />
+        <argument
+            android:name="setName"
+            android:defaultValue="null"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonCardDetailFragment"
+        android:name="com.toyibnurseha.mvvmpattern.pokemondetail.PokemonCardDetailFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_pokemon_card_detail" >
+        <argument
+            android:name="pokemonCard"
+            app:argType="com.toyibnurseha.mvvmpattern.model.PokemonCard"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="null" />
+    </fragment>
+</navigation>
